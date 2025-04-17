@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fashion Prompt Generator</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #444;
+            margin-bottom: 30px;
+        }
+        
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .column {
+            background-color: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .column h2 {
+            font-size: 1.2rem;
+            margin-top: 0;
+            color: #555;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+        
+        select, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            margin-bottom: 15px;
+            background-color: #fff;
+        }
+        
+        select:focus, textarea:focus {
+            outline: none;
+            border-color: #888;
+        }
+        
+        .result-container {
+            grid-column: 1 / -1;
+            background-color: #f0f8ff;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        
+        #result {
+            width: 100%;
+            min-height: 100px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: white;
+            font-family: monospace;
+            resize: vertical;
+        }
+        
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: #45a049;
+        }
+        
+        .copy-btn {
+            background-color: #2196F3;
+        }
+        
+        .copy-btn:hover {
+            background-color: #0b7dda;
+        }
+        
+        .share-btn {
+            background-color: #4CAF50;
+        }
+        
+        .share-btn:hover {
+            background-color: #45a049;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Fashion Prompt Generator</h1>
+    
+    <div class="container">
+        <div class="column">
+            <h2>Hair Type</h2>
+            <select id="hairType">
+                <option value=''>No Hairstyle</option>
+                <option value='afro hair style,'>Afro</option>
+                <option value='bob cut hair style,'>Bob cut</option>
+                <option value='pixie cut hair style,'>Pixie cut</option>
+                <option value='Pixie bob hair style,'>Pixie bob</option>
+                <option value='long layer hair style,'>Long layer</option>
+                <option value='beach waves hair style,'>Beach waves</option>
+                <option value='bangs hair style,'>Bangs</option>
+                <option value='braids hair style,'>Braids</option>
+                <option value='top knot hair style,'>Top knot</option>
+                <option value='undercut hair style,'>Undercut</option>
+                <option value='shag cut hair style,'>Shag cut</option>
+                <option value='layered bob hair style,'>Layered bob</option>
+                <option value='curly hair style,'>Curly hair</option>
+                <option value='sleek straight hair style,'>Sleek straight</option>
+                <option value='side swept bang hair style,'>Side swept bang</option>
+                <option value='balerina bun hair style,'>Balerina bun</option>
+                <option value='mehawk hair style,'>Mehawk</option>
+                <option value='ombre hair style,'>Ombre</option>
+                <option value='box braids hair style,'>Box braids</option>
+                <option value='half up half down hair style,'>Half up half down</option>
+                <option value='high ponytail hair style,'>High ponytail</option>
+                <option value='messy bun hair style,'>Messy bun</option>
+                <option value='fishtail braid hair style,'>Fishtail braid</option>
+                <option value='waterfall braid hair style,'>Waterfall braid</option>
+                <option value='dreadlocks hair style,'>Dreadlocks</option>
+                <option value='cornrows hair style,'>Cornrows</option>
+                <option value='bold shiny hair style,'>Spacebun</option>
+                <option value='afro hair style,'>Bold shiny</option>
+                <option value='buzz cut hair style,'>Buzz cut</option>
+                <option value='crew cut hair style,'>Crew cut</option>
+                <option value='pompadour hair style,'>Pompadour</option>
+                <option value='long hair style,'>Long</option>
+                <option value='flow hair style,'>Flow</option>
+                <option value='messy hair style,'>Messy</option>
+                <option value='morissey hair style,'>Morissey</option>
+                <option value='side parted hair style,'>Side parted</option>
+                <option value='comma hair style,'>Comma</option>
+                <option value='shaggy hair style,'>Shaggy</option>
+                <option value='french hair style,'>French</option>
+                <option value='comb hair style,'>Comb</option>
+                <option value='man bun hair style,'>Man bun</option>
+                <option value='spiky hair style,'>Spiky</option>
+                <option value='two blocks hair style,'>Two blocks</option>
+                <option value='quiff hair style,'>Quiff</option>
+                <option value='fringe hair style,'>Fringe</option>
+                <option value='crop cut hair style,'>Crop cut</option>
+                <option value='induction curl hair style,'>Induction curl</option>
+                <option value='hight and tight cut hair style,'>Hight and tight cut</option>
+                <option value='curtain haircut hair style,'>Curtain haircut</option>
+                <option value='slick back hair style,'>Slick back</option>
+                <option value='medium hair style,'>Medium</option>
+                <option value='bowl hair style,'>Bowl</option>
+            </select>
+            
+            <h2>Body Type</h2>
+            <select id="bodyType">
+                <option value='pretty'>Pretty</option>
+                <option value='chubby'>Chubby</option>
+                <option value='midweight'>Midweight</option>
+                <option value='overweight'>Overweight</option>	
+                <option value='flat'>Flat</option>
+                <option value='flabby'>Flabby</option>
+                <option value='buxomy'>Buxom</option>
+                <option value='voluptous'>Voluptous</option>
+                <option value='hefty'>Hefty</option>
+                <option value='pudgy'>Pudgy</option>
+                <option value='plumb'>Plumb</option>
+                <option value='obese'>Obese</option>
+                <option value='mordbidly obese'>Mordbidly obese</option>
+                <option value='stout'>Stout</option>
+                <option value='rotund'>Rotund</option>
+                <option value='thick-bodied'>Thick-bodied</option>
+                <option value='thicc'>Thicc</option>
+                <option value='thick'>Thick</option>
+                <option value='beefy'>Beefy</option>
+                <option value='portly'>Portly</option>
+                <option value='tubby'>Tubby</option>
+                <option value='slightly overweight'>Slightly overweight</option>
+                <option value='chubby'>Buff</option>
+                <option value='burl'>Burl</option>
+                <option value='fit'>Fit</option>
+                <option value='well-built'>Well-built</option>
+                <option value='well-endowed'>Well-endowed</option>
+                <option value='muscular'>Muscular</option>
+                <option value='stocky'>Stocky</option>
+                <option value='big-boned'>Big-boned</option>
+                <option value='Ccrvy'>Curvy</option>
+                <option value='flabby'>Flabby</option>
+                <option value='flyweight'>Flyweight</option>
+                <option value='skinny'>Skinny</option>
+                <option value='too skinny'>Too skinny</option>
+                <option value='anorexic'>Anorexic</option>
+                <option value='not skinny'>Not Skinny</option>
+                <option value='slender'>Slender</option>
+                <option value='lanky'>Lanky</option>
+                <option value='slim'>Slim</option>
+                <option value='slight'>Slight</option>
+            </select>
+        </div>
+        
+        <div class="column">
+            <h2>Personality</h2>
+            <select id="personality">
+                <option value='confident'>Confident</option>
+                <option value='cheerful'>Cheerful</option>
+                <option value='friendly'>Friendly</option>
+                <option value='elegant'>Elegant</option>
+                <option value='glamorous'>Glamorous</option>
+                <option value='handsome'>Handsome</option>
+                <option value='radiant'>Radiant</option>
+                <option value='smart'>Smart</option>
+                <option value='sincere'>Sincere</option>
+                <option value='attractive'>Attractive</option>
+                <option value='good-looking'>Good-looking</option>
+                <option value='beautiful'>Beautiful</option>
+                <option value='lovely'>Lovely</option>
+                <option value='pretty'>Pretty</option>
+                <option value='cute'>Cute</option>
+                <option value='nice'>Nice</option>
+                <option value='plain'>Plain</option>
+                <option value='homely'>Homely</option>
+                <option value='unattractive'>Unattractive</option>
+                <option value='ugly'>Ugly</option>
+                <option value='fashionable'>Fashionable</option>
+                <option value='neat'>Neat</option>
+                <option value='clean'>Clean</option>
+                <option value='tidy'>Tidy</option>
+                <option value='untidy'>Untidy</option>
+                <option value='dirty'>Dirty</option>
+                <option value='filthy'>Filthy</option>
+                <option value='angry'>Angry</option>
+                <option value='agressive'>Agressive</option>
+                <option value='arrogant'>Arrogant</option>
+                <option value='boring'>Boring</option>
+                <option value='cruel'>Cruel</option>
+                <option value='deceitful'>Deceitful</option>
+                <option value='dumb'>Dumb</option>
+                <option value='evil'>Evil</option>
+                <option value='grumpy'>Grumpy</option>
+                <option value='meane'>Mean</option>
+                <option value='rude'>Rude</option>
+            </select>
+            
+            <h2>Age</h2>
+            <select id="age">
+                <option value='7yo,'>7 Years Old</option>
+                <option value='17yo,'>17 Years Old</option>
+                <option value='27yo,'>27 Years Old</option>	
+                <option value='37yo,'>37 Years Old</option>	
+                <option value='47yo,'>47 Years Old</option>	
+                <option value='57yo,'>57 Years Old</option>	
+            </select>
+            
+            <h2>Skintone</h2>
+            <select id="skintone">
+                <option value='white skin,'>White</option>
+                <option value='black skin,'>Black</option>
+                <option value='melanin skin,'>Melanin</option>	
+                <option value='light skin,'>Light</option>
+                <option value='olive skin,'>Olive</option>
+                <option value='yellow skin,'>Yellow</option>
+                <option value='dark skin,'>Dark</option>
+                <option value='brown skin,'>Brown</option>
+                <option value='dark brown skin,'>Dark brown</option>
+                <option value='light brown skin,'>Light brown</option>
+                <option value='red brown skin,'>Red-brown</option>
+            </select>
+        </div>
+        
+        <div class="column">
+            <h2>Nationality</h2>
+            <select id="nationality">
+                <option value='Indonesian,'>Indonesian</option>
+                <option value='Malaysian,'>Malaysian</option>
+                <option value='Singaporean,'>Singaporean</option>
+                <option value='Philippine,'>Philippine</option>
+                <option value='Vietnamese,'>Vietnamese</option>
+                <option value='Cambodian,'>Cambodian</option>
+                <option value='Thai,'>Thai</option>
+                <option value='Chinese,'>Chinese</option>
+                <option value='Afghan,'>Afghan</option>
+                <option value='Algerian,'>Algerian</option>
+                <option value='American,'>American</option>
+                <option value='Angolan,'>Angolan</option>
+                <option value='Argentine,'>Argentine</option>
+                <option value='Austrian,'>Austrian</option>
+                <option value='Australian,'>Australian</option>
+                <option value='Bangladeshi,'>Bangladeshi</option>
+                <option value='Belarusian,'>Belarusian</option>
+                <option value='Belgian,'>Belgian</option>
+                <option value='Bolivian,'>Bolivian</option>
+                <option value='Bosnian,'>Bosnian</option>
+                <option value='Brazilian,'>Brazilian</option>
+                <option value='British,'>British</option>
+                <option value='Bulgarian,'>Bulgarian</option>
+                <option value='Cameroonian,'>Cameroonian</option>
+                <option value='Canadian,'>Canadian</option>
+                <option value='Central African,'>Central African</option>
+                <option value='Chadian,'>Chadian</option>
+                <option value='Colombian,'>Colombian</option>
+                <option value='Costa Rican,'>Costa Rican</option>
+                <option value='Croatian,'>Croatian</option>
+                <option value='Czech,'>Czech</option>
+                <option value='Congolese,'>Congolese</option>
+                <option value='Danish,'>Danish</option>
+                <option value='Ecuadorian,'>Ecuadorian</option>
+                <option value='Egyptian,'>Egyptian</option>
+                <option value='Salvadoran,'>Salvadoran</option>
+                <option value='English,'>English</option>
+                <option value='Estonian,'>Estonian</option>
+                <option value='Ethiopian,'>Ethiopian</option>
+                <option value='Finnish,'>Finnish</option>
+                <option value='French,'>French</option>
+                <option value='German,'>German</option>
+                <option value='Ghanaian,'>Ghanaian</option>
+                <option value='Greek,'>Greek</option>
+                <option value='Guatemalan,'>Guatemalan</option>
+                <option value='Dutch,'>Dutch</option>
+                <option value='Honduran,'>Honduran</option>
+                <option value='Hungarian,'>Hungarian</option>
+                <option value='Icelandic,'>Icelandic</option>
+                <option value='Indian,'>Indian</option>
+                <option value='Iranian,'>Iranian</option>
+                <option value='Iraqi,'>Iraqi</option>
+                <option value='Irish,'>Irish</option>
+                <option value='Israeli,'>Israeli</option>
+                <option value='Italian,'>Italian</option>
+                <option value='Ivorian,'>Ivorian</option>
+                <option value='Jamaican,'>Jamaican</option>
+                <option value='Japanese,'>Japanese</option>
+                <option value='Jordanian,'>Jordanian</option>
+                <option value='Kazakh,'>Kazakh</option>
+                <option value='Kenyan,'>Kenyan</option>
+                <option value='Lao,'>Lao</option>
+                <option value='Latvian,'>Latvian</option>
+                <option value='Libyan,'>Libyan</option>
+                <option value='Lithuanian,'>Lithuanian</option>
+                <option value='Malagasy,'>Malagasy</option>
+                <option value='Malian,'>Malian</option>
+                <option value='Mauritanian,'>Mauritanian</option>
+                <option value='Mexican,'>Mexican</option>
+                <option value='Moroccan,'>Moroccan</option>
+                <option value='Namibian,'>Namibian</option>
+                <option value='New Zealand,'>New Zealand</option>
+                <option value='Nicaraguan,'>Nicaraguan</option>
+                <option value='Nigerien,'>Nigerien</option>
+                <option value='Nigerian,'>Nigerian</option>
+                <option value='Norwegian,'>Norwegian</option>
+                <option value='Omani,'>Omani</option>
+                <option value='Pakistani,'>Pakistani</option>
+                <option value='Palestine,'>Palestine</option>
+                <option value='Panamanian,'>Panamanian</option>
+                <option value='Paraguayan,'>Paraguayan</option>
+                <option value='Peruvian,'>Peruvian</option>
+                <option value='Polish,'>Polish</option>
+                <option value='Portuguese,'>Portuguese</option>
+                <option value='Romanian,'>Romanian</option>
+                <option value='Russian,'>Russian</option>
+                <option value='Saudi Arabian,'>Saudi Arabian</option>
+                <option value='Scottish,'>Scottish</option>
+                <option value='Senegalese,'>Senegalese</option>
+                <option value='Serbian,'>Serbian</option>
+                <option value='Slovak,'>Slovak</option>
+                <option value='Somalian,'>Somalian</option>
+                <option value='Spanish,'>Spanish</option>
+                <option value='Sudanese,'>Sudanese</option>
+                <option value='Swedish,'>Swedish</option>
+                <option value='Swiss,'>Swiss</option>
+                <option value='Syrian,'>Syrian</option>
+                <option value='Tunisian,'>Tunisian</option>
+                <option value='Turkish,'>Turkish</option>
+                <option value='Turkmen,'>Turkmen</option>
+                <option value='Ukranian,'>Ukranian</option>
+                <option value='Emirati,'>Emirati</option>
+                <option value='Uruguayan,'>Uruguayan</option>
+                <option value='Welsh,'>Welsh</option>
+                <option value='Zambian,'>Zambian</option>
+                <option value='Zimbabwean,'>Zimbabwean</option>
+            </select>
+            
+            <h2>Race</h2>
+            <select id="race">
+                <option value='asian,'>Asian</option>
+                <option value='southeas asian,'>Southeast Asian</option>
+                <option value='african,'>African</option>
+                <option value='south african,'>South African</option>
+                <option value='european,'>European</option>
+                <option value='american,'>American</option>
+                <option value='central american,'>Central American</option>
+                <option value='south american,'>South American</option>
+                <option value='middle eastern,'>Middle Eastern</option>
+                <option value='australian,'>Australian</option>
+                <option value='causcasian,'>Causcasian</option>
+                <option value='mongoloid,'>Mongoloid</option>
+                <option value='negroid,'>Negroid</option>
+            </select>
+        </div>
+        
+        <div class="column">
+            <h2>Property 1 (Header)</h2>
+            <select id="prop1Color">
+                <option value='blue'>Blue</option>
+                <option value='black'>Black</option>
+                <option value='brown'>Brown</option>
+                <option value='white'>White</option>
+                <option value='green'>Green</option>
+                <option value='golden'>Golden</option>
+                <option value='orange'>Orange</option>
+                <option value='pink'>Pink</option>
+                <option value='purple'>Purple</option>
+                <option value='silver'>Silver</option>
+                <option value='red'>Red</option>
+                <option value='yellow'>Yellow</option>
+            </select>
+            
+            <select id="prop1">
+                <option value='baseball cap,'>Baseball Cap</option>
+                <option value='kupiah,'>Kupiah</option>
+                <option value='hijab,'>Hijab</option>
+                <option value='crown,'>Crown</option>
+                <option value='tiara,'>Tiara</option>
+                <option value='hat,'>Hat</option>
+                <option value='helmet,'>Helmet</option>
+                <option value='scarf,'>Scarf</option>
+                <option value='tie,'>Tie</option>
+            </select>
+            
+            <h2>Property 2 (Upper)</h2>
+            <select id="prop2Color">
+                <option value='blue'>Blue</option>
+                <option value='black'>Black</option>
+                <option value='brown'>Brown</option>
+                <option value='white'>White</option>
+                <option value='green'>Green</option>
+                <option value='golden'>Golden</option>
+                <option value='orange'>Orange</option>
+                <option value='pink'>Pink</option>
+                <option value='purple'>Purple</option>
+                <option value='silver'>Silver</option>
+                <option value='red'>Red</option>
+                <option value='yellow'>Yellow</option>
+            </select>
+            
+            <select id="prop2">
+                <option value='tshirt,'>T-shirt</option>
+                <option value='coat,'>Coat</option>
+                <option value='dress,'>Dress</option>
+                <option value='cloak,'>Cloak</option>
+                <option value='frump,'>Frump</option>
+                <option value='polka dots,'>Polka dots</option>
+                <option value='hoodies,'>Hoodies</option>
+                <option value='suit,'>Suit</option>
+                <option value='leather jacket,'>Leather jacket</option>
+                <option value='swimsuit,'>Swimsuit</option>
+                <option value='sweat shirt,'>Sweat shirt</option>
+                <option value='blouse,'>Blouse</option>
+                <option value='gown,'>Gown</option>
+                <option value='vest,'>Vest</option>
+                <option value='blazer,'>Blazer</option>
+            </select>
+        </div>
+        
+        <div class="column">
+            <h2>Property 3 (Bottom)</h2>
+            <select id="prop3Color">
+                <option value='blue'>Blue</option>
+                <option value='black'>Black</option>
+                <option value='brown'>Brown</option>
+                <option value='white'>White</option>
+                <option value='green'>Green</option>
+                <option value='golden'>Golden</option>
+                <option value='orange'>Orange</option>
+                <option value='pink'>Pink</option>
+                <option value='purple'>Purple</option>
+                <option value='silver'>Silver</option>
+                <option value='red'>Red</option>
+                <option value='yellow'>Yellow</option>
+            </select>
+            
+            <select id="prop3">
+                <option value='pant,'>Pant</option>
+                <option value='pantyhose,'>Pantyhose</option>
+                <option value='skirt,'>Skirt</option>
+                <option value='thights,'>Thights</option>
+                <option value='jean,'>Jean</option>
+                <option value='lacesleeves,'>Lacesleeves</option>
+                <option value='shorts,'>Shorts</option>
+                <option value='half pant,'>Half pant</option>
+                <option value='night pant,'>Night pant</option>
+                <option value='joggers,'>Joggers</option>
+                <option value='briefs,'>Briefs</option>
+                <option value='cargo pant,'>Cargo pant</option>
+            </select>
+            
+            <h2>Property 4 (Footer)</h2>
+            <select id="prop4Color">
+                <option value=''>No Colour</option>
+                <option value='blue'>Blue</option>
+                <option value='black'>Black</option>
+                <option value='brown'>Brown</option>
+                <option value='white'>White</option>
+                <option value='green'>Green</option>
+                <option value='golden'>Golden</option>
+                <option value='orange'>Orange</option>
+                <option value='pink'>Pink</option>
+                <option value='purple'>Purple</option>
+                <option value='silver'>Silver</option>
+                <option value='red'>Red</option>
+                <option value='yellow'>Yellow</option>
+            </select>
+            
+            <select id="prop4">
+                <option value='bareless,'>Bareless</option>
+                <option value='flip-flops,'>Flip-flops</option>
+                <option value='shoes,'>Shoes</option>
+                <option value='high heels,'>High heels</option>
+                <option value='Nike shoes,'>Nike Shoes</option>
+                <option value='converse,'>Converse</option>
+            </select>
+        </div>
+        
+        <div class="column">
+            <h2>Custom Description</h2>
+            <select id="customColor">
+                <option value=''>No Color</option>
+                <option value='blue'>Blue</option>
+                <option value='black'>Black</option>
+                <option value='brown'>Brown</option>
+                <option value='white'>White</option>
+                <option value='green'>Green</option>
+                <option value='golden'>Golden</option>
+                <option value='orange'>Orange</option>
+                <option value='pink'>Pink</option>
+                <option value='purple'>Purple</option>
+                <option value='silver'>Silver</option>
+                <option value='red'>Red</option>
+                <option value='yellow'>Yellow</option>
+            </select>
+            
+            <textarea id="customDesc" placeholder="Enter your custom description here..."></textarea>
+            
+            <button id="generateBtn">Generate Prompt</button>
+        </div>
+        
+        <div class="result-container">
+            <h2>Generated Prompt</h2>
+            <textarea id="result" readonly></textarea>
+            <div class="buttons">
+                <button id="copyBtn" class="copy-btn">Copy Prompt</button>
+                <button id="shareBtn" class="share-btn">Share to WhatsApp</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.getElementById('generateBtn').addEventListener('click', generatePrompt);
+        document.getElementById('copyBtn').addEventListener('click', copyPrompt);
+        document.getElementById('shareBtn').addEventListener('click', shareToWhatsApp);
+        
+        function generatePrompt() {
+            const hairType = document.getElementById('hairType').value;
+            const bodyType = document.getElementById('bodyType').value;
+            const personality = document.getElementById('personality').value;
+            const age = document.getElementById('age').value;
+            const skintone = document.getElementById('skintone').value;
+            const nationality = document.getElementById('nationality').value;
+            const race = document.getElementById('race').value;
+            
+            const prop1Color = document.getElementById('prop1Color').value;
+            const prop1 = document.getElementById('prop1').value;
+            const prop2Color = document.getElementById('prop2Color').value;
+            const prop2 = document.getElementById('prop2').value;
+            const prop3Color = document.getElementById('prop3Color').value;
+            const prop3 = document.getElementById('prop3').value;
+            const prop4Color = document.getElementById('prop4Color').value;
+            const prop4 = document.getElementById('prop4').value;
+            
+            const customColor = document.getElementById('customColor').value;
+            const customDesc = document.getElementById('customDesc').value;
+            
+            let prompt = '';
+            
+            // Basic attributes
+            prompt += `${hairType} ${age} ${skintone} ${nationality} ${race} ${bodyType} ${personality} `;
+            
+            // Properties with colors
+            if (prop1) {
+                prompt += `${prop1Color} ${prop1} `;
+            }
+            
+            if (prop2) {
+                prompt += `${prop2Color} ${prop2} `;
+            }
+            
+            if (prop3) {
+                prompt += `${prop3Color} ${prop3} `;
+            }
+            
+            if (prop4) {
+                if (prop4Color) {
+                    prompt += `${prop4Color} ${prop4} `;
+                } else {
+                    prompt += `${prop4} `;
+                }
+            }
+            
+            // Custom description
+            if (customDesc) {
+                if (customColor) {
+                    prompt += `${customColor} ${customDesc} `;
+                } else {
+                    prompt += `${customDesc} `;
+                }
+            }
+            
+            // Clean up extra spaces and commas
+            prompt = prompt.replace(/\s+/g, ' ').trim();
+            prompt = prompt.replace(/,\s+/g, ', ');
+            
+            document.getElementById('result').value = prompt;
+        }
+        
+        function copyPrompt() {
+            const result = document.getElementById('result');
+            result.select();
+            document.execCommand('copy');
+            
+            // Visual feedback
+            const copyBtn = document.getElementById('copyBtn');
+            copyBtn.textContent = 'Copied!';
+            setTimeout(() => {
+                copyBtn.textContent = 'Copy Prompt';
+            }, 2000);
+        }
+        
+        function shareToWhatsApp() {
+            const prompt = document.getElementById('result').value;
+            if (prompt.trim() === '') {
+                alert('Please generate a prompt first!');
+                return;
+            }
+            
+            const encodedPrompt = encodeURIComponent(prompt);
+            const whatsappUrl = `https://wa.me/?text=${encodedPrompt}`;
+            window.open(whatsappUrl, '_blank');
+        }
+    </script>
+</body>
+</html>
