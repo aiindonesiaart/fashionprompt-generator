@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         prompt += `${person} with ${hairStyle.toLowerCase()} ${hairStyle.includes('cut') ? '' : 'hair'}, ${skinTone.toLowerCase()} skin, `;
-        if (bodyType) prompt += `${bodyType.toLowerCase()} body type. `;
+        if (bodyType) prompt += `${bodyType.toLowerCase()} body type, `;
         
         // Add clothing items
         let clothingItems = [];
@@ -106,7 +106,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (prop4 && propColor4) clothingItems.push(`${propColor4.toLowerCase()} ${prop4.toLowerCase()}`);
         
         if (clothingItems.length > 0) {
-            prompt += `She's wearing ${joinWithAnd(clothingItems)}. `;
+            prompt += `wearing ${joinWithAnd(clothingItems)}. `;
         }
         
         // Add custom properties
