@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', function() {
             prompt += `${nationality} `;
         }
         
-        prompt += `${person} with ${hairStyle.toLowerCase()} ${hairStyle.includes('cut') ? '' : 'hair'}, ${skinTone.toLowerCase()} skin, `;
+        prompt += `${person} with ${hairStyle.toLowerCase()} ${hairStyle.includes('cut') ? '' : ''}, ${skinTone.toLowerCase()} , `;
         if (bodyType) prompt += `${bodyType.toLowerCase()} body type, `;
         
         // Add clothing items
