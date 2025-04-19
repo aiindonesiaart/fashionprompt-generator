@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fashion Prompt Generator</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Fashion Prompt Generator</h1>
+  </header>
+  <main>
+    <form id="fashion-form">
+      <!-- Angle View -->
+      <div class="dropdown">
+        <label for="angle-view">Angle View:</label>
+        <select id="angle-view" multiple>
+          <option>Front View</option>
+          <option>Side View</option>
+          <option>Over the Shoulder</option>
+          <!-- Add remaining options -->
+        </select>
+      </div>
+
+      <!-- Race -->
+      <div class="dropdown">
+        <label for="race">Race:</label>
+        <select id="race">
+          <option>Asian</option>
+          <option>Southeast Asian</option>
+          <option>African</option>
+          <!-- Add remaining options -->
+        </select>
+      </div>
+
+      <!-- Nationality -->
+      <div class="dropdown">
+        <label for="nationality">Nationality:</label>
+        <select id="nationality">
+          <option>Indonesian</option>
+          <option>Malaysian</option>
+          <option>Singaporean</option>
+          <!-- Add remaining options -->
+        </select>
+      </div>
+
+      <!-- Describe Yourself -->
+      <div>
+        <label for="describe-yourself">Describe Yourself:</label>
+        <textarea id="describe-yourself" placeholder="Describe yourself here..."></textarea>
+      </div>
+
+      <!-- Generate Button -->
+      <button type="button" id="generate-prompt">Generate Prompt</button>
+    </form>
+
+    <!-- Result Section -->
+    <section id="result-section">
+      <h2>Your Fashion Prompt:</h2>
+      <textarea id="result-prompt" readonly></textarea>
+      <button id="copy-prompt">Copy to Clipboard</button>
+      <a id="share-whatsapp" href="#" target="_blank">Share to WhatsApp</a>
+    </section>
+  </main>
+  <footer>
+    <p>Fashion Prompt Generator © 2025</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
