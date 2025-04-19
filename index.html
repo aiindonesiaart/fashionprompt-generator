@@ -1,72 +1,277 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fashion Prompt Generator</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fashion Prompt Generator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-  <header>
-    <h1>Fashion Prompt Generator</h1>
-  </header>
-  <main>
-    <form id="fashion-form">
-      <!-- Angle View -->
-      <div class="dropdown">
-        <label for="angle-view">Angle View:</label>
-        <select id="angle-view" multiple>
-          <option>Front View</option>
-          <option>Side View</option>
-          <option>Over the Shoulder</option>
-          <!-- Add remaining options -->
-        </select>
-      </div>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-tshirt"></i> Fashion Prompt Generator</h1>
+            <p>Create detailed fashion prompts for your designs</p>
+        </header>
 
-      <!-- Race -->
-      <div class="dropdown">
-        <label for="race">Race:</label>
-        <select id="race">
-          <option>Asian</option>
-          <option>Southeast Asian</option>
-          <option>African</option>
-          <!-- Add remaining options -->
-        </select>
-      </div>
+        <main>
+            <section class="prompt-preview">
+                <h2>Your Fashion Prompt</h2>
+                <div class="prompt-output" id="promptOutput">
+                    Select options to generate your prompt...
+                </div>
+                <div class="prompt-actions">
+                    <button id="copyBtn"><i class="fas fa-copy"></i> Copy Prompt</button>
+                    <button id="shareBtn"><i class="fab fa-whatsapp"></i> Share via WhatsApp</button>
+                </div>
+            </section>
 
-      <!-- Nationality -->
-      <div class="dropdown">
-        <label for="nationality">Nationality:</label>
-        <select id="nationality">
-          <option>Indonesian</option>
-          <option>Malaysian</option>
-          <option>Singaporean</option>
-          <!-- Add remaining options -->
-        </select>
-      </div>
+            <section class="form-section">
+                <form id="fashionForm">
+                    <div class="form-group collapsible">
+                        <h3 class="collapsible-header"><i class="fas fa-camera"></i> Angle View</h3>
+                        <div class="collapsible-content">
+                            <select id="angleView">
+                                <option value="Front view">Front view</option>
+                                <option value="Side view">Side view</option>
+                                <option value="Over the shoulder">Over the shoulder</option>
+                                <option value="From behind view">From behind view</option>
+                                <option value="Dutch angle">Dutch angle</option>
+                                <option value="Wide angle view">Wide angle view</option>
+                                <option value="Low angle view">Low angle view</option>
+                                <option value="Drone view">Drone view</option>
+                                <option value="From above view">From above view</option>
+                                <option value="Top view">Top view</option>
+                                <option value="Bird's eye view">Bird's eye view</option>
+                                <option value="From below view">From below view</option>
+                                <option value="Worm eye view">Worm eye view</option>
+                                <option value="Close up">Close up</option>
+                                <option value="Extreme close up">Extreme close up</option>
+                            </select>
+                        </div>
+                    </div>
 
-      <!-- Describe Yourself -->
-      <div>
-        <label for="describe-yourself">Describe Yourself:</label>
-        <textarea id="describe-yourself" placeholder="Describe yourself here..."></textarea>
-      </div>
+                    <div class="form-group collapsible">
+                        <h3 class="collapsible-header"><i class="fas fa-user"></i> Human Section</h3>
+                        <div class="collapsible-content">
+                            <div class="form-row">
+                                <label for="race">Race:</label>
+                                <select id="race">
+                                    <option value="Asian">Asian</option>
+                                    <option value="Southeast Asian">Southeast Asian</option>
+                                    <option value="African">African</option>
+                                    <option value="South African">South African</option>
+                                    <option value="European">European</option>
+                                    <option value="American">American</option>
+                                    <option value="Central American">Central American</option>
+                                    <option value="South American">South American</option>
+                                    <option value="Middle Eastern">Middle Eastern</option>
+                                    <option value="Australian">Australian</option>
+                                    <option value="Caucasian">Caucasian</option>
+                                    <option value="Mongoloid">Mongoloid</option>
+                                    <option value="Negroid">Negroid</option>
+                                </select>
+                            </div>
 
-      <!-- Generate Button -->
-      <button type="button" id="generate-prompt">Generate Prompt</button>
-    </form>
+                            <div class="form-row">
+                                <label for="nationality">Nationality:</label>
+                                <select id="nationality">
+                                    <option value="Indonesian">Indonesian</option>
+                                    <option value="Malaysian">Malaysian</option>
+                                    <option value="Singaporean">Singaporean</option>
+                                    <!-- More nationalities would be added here -->
+                                    <option value="American">American</option>
+                                    <option value="British">British</option>
+                                    <option value="Japanese">Japanese</option>
+                                </select>
+                            </div>
 
-    <!-- Result Section -->
-    <section id="result-section">
-      <h2>Your Fashion Prompt:</h2>
-      <textarea id="result-prompt" readonly></textarea>
-      <button id="copy-prompt">Copy to Clipboard</button>
-      <a id="share-whatsapp" href="#" target="_blank">Share to WhatsApp</a>
-    </section>
-  </main>
-  <footer>
-    <p>Fashion Prompt Generator © 2025</p>
-  </footer>
+                            <div class="form-row" id="ethnicGroup" style="display: none;">
+                                <label for="ethnic">Ethnic:</label>
+                                <select id="ethnic">
+                                    <option value="Javanese">Javanese</option>
+                                    <option value="Sundanese">Sundanese</option>
+                                    <option value="Madurese">Madurese</option>
+                                    <!-- More ethnic groups would be added here -->
+                                </select>
+                            </div>
+                        </div>
+                    </div>
 
-  <script src="script.js"></script>
+                    <div class="form-group collapsible">
+                        <h3 class="collapsible-header"><i class="fas fa-id-card"></i> Identification</h3>
+                        <div class="collapsible-content">
+                            <div class="form-row">
+                                <label for="hairStyle">Hair Style:</label>
+                                <select id="hairStyle">
+                                    <option value="Afro">Afro</option>
+                                    <option value="Bob cut">Bob cut</option>
+                                    <option value="Pixie cut">Pixie cut</option>
+                                    <!-- More hairstyles would be added here -->
+                                </select>
+                            </div>
+
+                            <div class="form-row">
+                                <label for="skinTone">Skin Tone:</label>
+                                <select id="skinTone">
+                                    <option value="White">White</option>
+                                    <option value="Black">Black</option>
+                                    <option value="Melanin">Melanin</option>
+                                    <option value="Light">Light</option>
+                                    <option value="Olive">Olive</option>
+                                    <option value="Yellow">Yellow</option>
+                                    <option value="Dark">Dark</option>
+                                    <option value="Brown">Brown</option>
+                                    <option value="Dark brown">Dark brown</option>
+                                    <option value="Light brown">Light brown</option>
+                                    <option value="Red brown">Red brown</option>
+                                </select>
+                            </div>
+
+                            <div class="form-row">
+                                <label for="age">Age:</label>
+                                <select id="age">
+                                    <option value="7yo">7 years old</option>
+                                    <option value="17yo">17 years old</option>
+                                    <option value="27yo" selected>27 years old</option>
+                                    <option value="37yo">37 years old</option>
+                                    <option value="47yo">47 years old</option>
+                                    <option value="57yo">57 years old</option>
+                                </select>
+                            </div>
+
+                            <div class="form-row">
+                                <label for="personality">Personality:</label>
+                                <select id="personality">
+                                    <option value="Confident">Confident</option>
+                                    <option value="Cheerful">Cheerful</option>
+                                    <option value="Friendly">Friendly</option>
+                                    <!-- More personalities would be added here -->
+                                </select>
+                            </div>
+
+                            <div class="form-row">
+                                <label for="bodyType">Body Type:</label>
+                                <select id="bodyType">
+                                    <option value="Pretty">Pretty</option>
+                                    <option value="Chubby">Chubby</option>
+                                    <option value="Midweight">Midweight</option>
+                                    <!-- More body types would be added here -->
+                                </select>
+                            </div>
+
+                            <div class="form-row">
+                                <label for="person">Person:</label>
+                                <select id="person">
+                                    <option value="Man">Man</option>
+                                    <option value="Woman" selected>Woman</option>
+                                    <option value="Boy">Boy</option>
+                                    <option value="Girl">Girl</option>
+                                    <option value="Baby">Baby</option>
+                                    <option value="Kid">Kid</option>
+                                </select>
+                            </div>
+
+                            <div class="form-row">
+                                <label for="describeSubject">Describe Your Subject:</label>
+                                <textarea id="describeSubject" placeholder="Additional description..."></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group collapsible">
+                        <h3 class="collapsible-header"><i class="fas fa-tshirt"></i> Clothing & Colors</h3>
+                        <div class="collapsible-content">
+                            <div class="form-row">
+                                <label>Head:</label>
+                                <div class="color-item-group">
+                                    <select class="color-select" id="propColor1">
+                                        <option value="Red">Red</option>
+                                        <option value="Blue">Blue</option>
+                                        <option value="White" selected>White</option>
+                                        <!-- More colors would be added here -->
+                                    </select>
+                                    <select id="prop1">
+                                        <option value="">None</option>
+                                        <option value="Hijab">Hijab</option>
+                                        <option value="Hat">Hat</option>
+                                        <!-- More head items would be added here -->
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <label>Upper:</label>
+                                <div class="color-item-group">
+                                    <select class="color-select" id="propColor2">
+                                        <option value="Sapphire" selected>Sapphire</option>
+                                        <option value="Blue">Blue</option>
+                                        <!-- More colors would be added here -->
+                                    </select>
+                                    <select id="prop2">
+                                        <option value="Dress" selected>Dress</option>
+                                        <option value="Tshirt">T-shirt</option>
+                                        <!-- More upper items would be added here -->
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <label>Bottom:</label>
+                                <div class="color-item-group">
+                                    <select class="color-select" id="propColor3">
+                                        <option value="Dark blue" selected>Dark blue</option>
+                                        <option value="Black">Black</option>
+                                        <!-- More colors would be added here -->
+                                    </select>
+                                    <select id="prop3">
+                                        <option value="Jeans" selected>Jeans</option>
+                                        <option value="Skirt">Skirt</option>
+                                        <!-- More bottom items would be added here -->
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <label>Footwear:</label>
+                                <div class="color-item-group">
+                                    <select class="color-select" id="propColor4">
+                                        <option value="Black" selected>Black</option>
+                                        <option value="White">White</option>
+                                        <!-- More colors would be added here -->
+                                    </select>
+                                    <select id="prop4">
+                                        <option value="High heels" selected>High heels</option>
+                                        <option value="Shoes">Shoes</option>
+                                        <!-- More footwear items would be added here -->
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group collapsible">
+                        <h3 class="collapsible-header"><i class="fas fa-plus-circle"></i> Custom Properties</h3>
+                        <div class="collapsible-content">
+                            <div class="form-row">
+                                <label for="customColor">Custom Color Property:</label>
+                                <input type="text" id="customColor" placeholder="e.g., Silver">
+                            </div>
+                            <div class="form-row">
+                                <label for="customProperty">Custom Property:</label>
+                                <input type="text" id="customProperty" placeholder="e.g., Elegant jewelry">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </section>
+        </main>
+
+        <footer>
+            <p>Fashion Prompt Generator &copy; 2023</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
